@@ -1,5 +1,7 @@
 ---@diagnostic disable: undefined-global
 
+local render = ui.render or ya.render
+
 local save = ya.sync(function(this, cwd, output)
   if cwd:match("%.git[/\\]") or cwd:match("%.git$") then
     this.output = nil
@@ -7,7 +9,7 @@ local save = ya.sync(function(this, cwd, output)
   end
   if cx.active.current.cwd == Url(cwd) then
     this.output = output
-    ui.render()
+    render()
   end
 end)
 
